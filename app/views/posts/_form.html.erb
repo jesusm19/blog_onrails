@@ -1,0 +1,26 @@
+<%-# Vista parcial para creación y edición de posts  -%>
+<%= form_for @post do |f| %>
+  <% if @post.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> No se ha guardado el post:</h2>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </p>
+
+  <p>
+    <%= f.label :texto %><br>
+    <%= f.text_area :texto %>
+  </p>
+
+  <p>
+    <%= f.submit :'Guardar artículo' %>
+  </p>
+<% end %>

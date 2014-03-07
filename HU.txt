@@ -1,0 +1,9 @@
+HU-1 Yo como usuario quiero crear un artículo
+HU-2 Yo como usuario quiero editar un artículo
+HU-3 Yo como usuario quiero ver un artículo
+HU-4 Yo como usuario quiero eliminar un artículo
+HU-5 Yo como usuario quiero ver una lista de los artículos
+HU-6 Yo como lector quiero crear un comentario sobre el artículo
+HU-7 Yo como lector quiero eliminar el comentario que realicé
+HU-8 Yo como usuario quiero loguearme para administrar mi artículo
+HU-9 Yo como lector quiero loguearme para administrar mis comentarios

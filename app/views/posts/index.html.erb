@@ -1,0 +1,22 @@
+<%-# Vista para despligue de posts  -%>
+<h1>Lista de artículos</h1>
+<%= link_to 'Crear artículo', :action => :new %>
+<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Texto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.titulo %></td>
+      <td><%= post.texto %></td>
+      <td><%= link_to 'Mostrar', :action => :show, :id => post.id %></td>
+      <td><%= link_to 'Editar', :action => :edit, :id => post.id %></td>
+      <td><%= link_to 'Eliminar', {:action => :destroy, :id => post.id}, :method => :delete, :data => { :confirm => "¿Eliminar artículo?"} %></td>
+    </tr>
+  <% end %>
+</table>

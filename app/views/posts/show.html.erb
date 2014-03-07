@@ -1,0 +1,57 @@
+<%-# Vista para mostrar un post  -%>
+<h1> Artículo </h1>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @post.titulo %>
+</p>
+
+<p>
+  <strong>Texto:</strong>
+  <%= @post.texto %>
+</p>
+
+<h1>Comentarios</h1>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Usuario:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comentario:</strong>
+    <%= comment.body %>
+  </p>
+   <p>
+      <%= link_to 'Eliminar Comentario', [comment.post, comment],:method => :delete, :data => { :confirm => '¿Estás seguro?' } %>
+  </p>
+<% end %>
+
+<h2> Agregar comentario: </h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  
+    <% if @post.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@post.errors.count, "error") %>
+        No se ha guardado el comentario: </h2>
+        <ul>
+          <% @post.errors.full_message.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p> 
+    <h4>Usuario:</h4>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <h4>Comentario:</h4>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit :"Agregar comentario" %>
+  </p>
+<% end %>
+
+<%= link_to 'Volver', :action => :index %> | <%= link_to 'Editar', :action => :edit, :id => @post.id %>
